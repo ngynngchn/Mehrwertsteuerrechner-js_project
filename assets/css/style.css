@@ -18,9 +18,11 @@ h1 {
 form {
 	border: 1px solid #000;
 	border-radius: 3px;
-	width: 400px;
 	overflow: hidden;
+	width: 400px;
 	margin: 0.5rem auto;
+	display: flex;
+	flex-direction: column;
 }
 
 h2 {
@@ -31,31 +33,41 @@ h2 {
 section {
 	background-color: #f3f6f8;
 	border-bottom: 5px solid white;
-	padding: 1vw;
+	padding: 0.5rem;
 }
 
 h2 {
 	margin: 0.5rem 0;
 }
 
-label {
-	padding: 1rem 0;
-}
-
 input[type="text"] {
 	width: fit-content;
 	padding: 0.5rem;
+	margin-top: 0.5rem;
 }
 
 /* Button */
-input[type="submit"] {
+button {
 	background-color: #1d5891;
 	color: white;
 	border: none;
-	padding: 1vh;
-	margin: 0.5rem 0.5rem 1rem;
+	padding: 0.5rem;
+
+	margin: 0.5rem;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+		rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 	border-radius: 3px;
-	width: 97%;
+	transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+		rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+input[type="submit"]:active {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+		rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 /* Result */
