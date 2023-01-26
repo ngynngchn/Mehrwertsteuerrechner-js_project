@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Mehrwertsteuer Rechner</title>
+		<link rel="stylesheet" href="./assets/css/style.css" />
+	</head>
+	<body>
+		<h1>Mehrwertsteuer-Rechner</h1>
+		<form onsubmit="return false">
+			<!-- Mehrwertsteuer Art -->
+			<section class="type">
+				<h2>Was soll berechnet werden?</h2>
+
+				<article>
+					<input
+						type="radio"
+						name="vat"
+						id="gross"
+						value="gross"
+						onchange="chooseType()"
+						checked
+					/>
+					<label for="vat">Mehrwertsteuer aufschlagen (Netto zu Brutto)</label>
+				</article>
+
+				<article>
+					<input
+						type="radio"
+						name="vat"
+						id="net"
+						value="net"
+						onchange="chooseType()"
+					/>
+					<label for="vat">Mehrwertsteuer abziehen (Brutto zu Netto)</label>
+				</article>
+			</section>
+
+			<!-- Mehrwertsteuersatz -->
+
+			<section>
+				<h2>Mehrwersteuersatz</h2>
+				<input
+					type="radio"
+					name="vat-percent"
+					id="type19"
+					value="19%"
+					checked
+					onchange="calculateVatValue()"
+				/>
+				<label for="vat-percent">19%</label>
+
+				<input
+					type="radio"
+					name="vat-percent"
+					id="type7"
+					value="7%"
+					onchange="calculateVatValue()"
+				/>
+				<label for="vat-percent">7%</label>
+			</section>
+
+			<!-- INPUT FIELD-->
+
+			<section>
+				<label for="price " class="price"
+					>Nettobetrag (Preis ohne Mehrwersteuer) in Euro
+				</label>
+				<input
+					type="text"
+					name="price"
+					id="price"
+					placeholder="10,00"
+					required
+				/>
+			</section>
+			<!-- BUTTON  -->
+			<input type="submit" value="BERECHNEN" onclick="calculateVatValue()" />
+
+			<!-- OUTPUT FIELDS -->
+			<h3>Ergebnis</h3>
+			<section>
+				<h2>Mehrwertsteuerbetrag</h2>
+				<p id="vat-price"></p>
+			</section>
+
+			<section>
+				<h2 class="total">Nettobetrag (Endpreis)</h2>
+				<p id="total"></p>
+			</section>
+		</form>
+
+		<script src="./assets/js/main.js"></script>
+	</body>
+</html>
