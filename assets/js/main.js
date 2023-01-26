@@ -56,14 +56,16 @@ function calculateVatValue() {
 		let input = parseInt(priceField.value);
 		let percentage = choosePercentage();
 		let partial = input * percentage;
-
 		vatPrice.innerHTML = `${partial.toFixed(2)} €`;
+		vatPrice.innerHTML = vatPrice.innerHTML.replaceAll(".", ",");
 		if (gross.checked) {
 			let totalValue = input + partial;
 			total.innerHTML = `${totalValue.toFixed(2)} €`;
+			total.innerHTML = total.innerHTML.replaceAll(".", ",");
 		} else if (net.checked) {
 			let totalValue = input - partial;
 			total.innerHTML = `${totalValue.toFixed(2)} €`;
+			total.innerHTML = total.innerHTML.replaceAll(".", ",");
 		}
 	}
 }
