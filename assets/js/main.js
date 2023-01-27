@@ -52,20 +52,26 @@ function getPercent(type) {
 
 // calculating vat values
 function calculateVatValue() {
-	if (priceField.value !== "") {
+	if (
+		priceField.value > 0 &&
+		(gross.checked || net.checked) &&
+		(type19.checked || type7.checked)
+	) {
 		let input = parseInt(priceField.value);
 		let percentage = choosePercentage();
-		let partial = input * percentage;
+		let partial;
+		let totalValue;
+
+		if (gross.checked) {
+			partial = input * percentage;
+			totalValue = input + partial;
+		} else if (net.checked) {
+			partial = (input / (1 + percentage)) * percentage;
+			totalValue = input - partial;
+		}
 		vatPrice.innerHTML = `${partial.toFixed(2)} €`;
 		vatPrice.innerHTML = vatPrice.innerHTML.replaceAll(".", ",");
-		if (gross.checked) {
-			let totalValue = input + partial;
-			total.innerHTML = `${totalValue.toFixed(2)} €`;
-			total.innerHTML = total.innerHTML.replaceAll(".", ",");
-		} else if (net.checked) {
-			let totalValue = input - partial;
-			total.innerHTML = `${totalValue.toFixed(2)} €`;
-			total.innerHTML = total.innerHTML.replaceAll(".", ",");
-		}
+		total.innerHTML = `${totalValue.toFixed(2)} €`;
+		total.innerHTML = total.innerHTML.replaceAll(".", ",");
 	}
 }
